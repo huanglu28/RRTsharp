@@ -53,6 +53,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <functional>
 
 namespace ob = ompl::base;
 namespace og = ompl::geometric;
@@ -160,7 +161,7 @@ void planWithSimpleSetup(void)
     og::SimpleSetup ss(space);
 
     // set state validity checking for this space
-    ss.setStateValidityChecker(boost::bind(&isStateValid, _1));
+    ss.setStateValidityChecker(std::bind(&isStateValid, std::placeholders::_1));
 
     // create a random start state
     ob::ScopedState<> start(space);

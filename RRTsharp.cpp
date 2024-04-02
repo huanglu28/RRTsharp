@@ -38,8 +38,8 @@ ompl::RRTsharp::RRTsharp(const ompl::base::SpaceInformationPtr &si)
     ompl::base::Planner::declareParam<bool>("use_kNN_search", this, &RRTsharp::setKnn, &RRTsharp::getKnn, "0,1");
     ompl::base::Planner::declareParam<int>("variant", this, &RRTsharp::setVariant, &RRTsharp::getVariant, "0:3");
 
-    addPlannerProgressProperty("iterations INTEGER", boost::bind(&RRTsharp::numIterationsProperty, this));
-    addPlannerProgressProperty("best cost REAL", boost::bind(&RRTsharp::bestCostProperty, this));
+    addPlannerProgressProperty("iterations INTEGER", std::bind(&RRTsharp::numIterationsProperty, this));
+    addPlannerProgressProperty("best cost REAL", std::bind(&RRTsharp::bestCostProperty, this));
 }
 
 ompl::RRTsharp::~RRTsharp()

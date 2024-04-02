@@ -26,11 +26,11 @@ else()
 endif()
 
 ### OMPL ###
-find_package(OMPL REQUIRED)
-if(OMPL_FOUND)
+find_package(ompl REQUIRED)
+if(ompl_FOUND)
     message(STATUS "OMPL Include Directory: ${OMPL_INCLUDE_DIRS}")
     message(STATUS "OMPL Libraries: ${OMPL_LIBRARIES}")
-    message(STATUS "OMPL App Libraries: ${OMPLAPP_LIBRARIES}")
+    message(STATUS "OMPL App Libraries: ${omplAPP_LIBRARIES}")
 
     # Include OMPL headers and link OMPL compiled libraries
     target_include_directories(RRTsharp PUBLIC ${OMPL_INCLUDE_DIRS})
@@ -48,7 +48,8 @@ if(OPENMP_FOUND)
 
     # Add OpenMP compile and link options
     target_compile_options(RRTsharp PUBLIC ${OpenMP_CXX_FLAGS})
-    if(NOT MSVC)
+    if(NOT MSVC)cmake_minimum_required(VERSION 3.3)
+    project(RRTsharp)
         set_property(TARGET RRTsharp APPEND PROPERTY LINK_FLAGS ${OpenMP_CXX_FLAGS})
     endif()
 
