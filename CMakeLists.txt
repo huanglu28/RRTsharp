@@ -48,8 +48,7 @@ if(OPENMP_FOUND)
 
     # Add OpenMP compile and link options
     target_compile_options(RRTsharp PUBLIC ${OpenMP_CXX_FLAGS})
-    if(NOT MSVC)cmake_minimum_required(VERSION 3.3)
-    project(RRTsharp)
+    if(NOT MSVC)
         set_property(TARGET RRTsharp APPEND PROPERTY LINK_FLAGS ${OpenMP_CXX_FLAGS})
     endif()
 
